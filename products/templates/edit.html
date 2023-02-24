@@ -1,0 +1,52 @@
+<html>
+ 
+<head>
+    <title>C.R.U.D</title>
+    <style>
+        .container {
+            margin-left: 550px;
+            margin-top: 150px;
+            width: 300px;
+            height: 100px;
+            padding: 15px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+ 
+<body>
+    <h1>Edit</h1>
+
+    <div class="container">
+        <table>
+            <tbody>
+                <form action="http://127.0.0.1:8000/products/update/{{object.id}}" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <td> Name</td>
+                        <td><input type="text" name="name" value={{object.name}}></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="text" name="price" value={{object.price}}></td>
+                    </tr>
+                    <tr>
+                        <td>Stock</td>
+                        <td><input type="text" name='stock' value={{object.stock}}></td>
+                    </tr>
+                    <tr>
+                        <td>image</td>
+                        <td><input type="text" name='image' value={{object.image}}></td>
+                    </tr>
+                    <tr>
+                        <td>slug</td>
+                        <td><input type="hidden" name='slug' value={{object.slug}}></td>
+                    </tr>
+                    <tr>
+                        <td><button>Submit</button></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+  </div>
+</body>

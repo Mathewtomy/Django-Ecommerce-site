@@ -1,0 +1,520 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock title %}
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+
+<link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/noui/nouislider.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/fonts/elegant-font/html-css/style.css">
+<link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/fonts/themify/themify-icons.css">
+		
+
+
+<style media="screen">
+
+.mx-auto {
+margin-right: auto!important;
+margin-left: auto!important;
+display: grid;	
+grid-template-columns: 1fr 1fr 1fr;
+
+grid-template-rows: 1fr 1fr 1fr;
+
+row-gap: 25px;
+
+column-gap: 25px;
+
+
+	}
+	.mb-3 {
+		margin-bottom: 1rem!important;
+	}
+	.card {
+		position: relative;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: 0.25rem;
+	}
+
+	.bo4 {
+		border: 0px solid #e6e6e6;
+		border-radius: 1px;
+	}
+	.flex-w {
+		display: -webkit-box;
+		align-items: center;
+
+	}
+	#rangeByPrice{
+		display: block;
+    padding-left: 8px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	color: #444;
+    line-height: 28px;
+	box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    user-select: none;
+	}
+#sortByPrice{
+	display: block;
+    padding-left: 8px;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	color: #444;
+    line-height: 28px;
+	box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    user-select: none;
+}
+.filter-grid{
+	padding-left:40px;
+}
+.bg4 {
+    background-color: #111111;
+
+    width: 100px;
+}
+</style>
+		
+
+
+
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(https://preview.colorlib.com/theme/fashe/images/heading-pages-02.jpg.webp);">
+		<h2 class="l-text2 t-center">
+		Women
+		</h2>
+		<p class="m-text13 t-center">
+		New Arrivals Women Collection 2018
+		</p>
+		</section>
+
+<section class="bgwhite p-t-55 p-b-65">
+<div class="container">
+<div class="row">
+<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+<div class="leftbar p-r-20 p-r-0-sm">
+
+<h4 class="m-text14 p-b-7">
+Categories
+</h4>
+
+<div class="list-group">
+
+	<a href="/" class="list-group-item list-group-item-action btn btn-outline-success">All Products</a>
+
+	{% for category in categories %}
+	<a href="/?category={{category.id}}"
+		class="list-group-item list-group-item-action btn btn-outline-success ">{{category.category_name}}</a>
+	{% endfor %}
+</div>
+<br>
+
+<h4 class="m-text14 p-b-32">
+Filters
+</h4>
+<div class="filter-price p-t-22 p-b-50 bo3">
+<div class="m-text15 p-b-17">
+Price
+</div>
+<div class="wra-filter-bar">
+<div id="filter-bar"></div>
+</div>
+<div class="flex-sb-m flex-w p-t-16">
+<div class="w-size11">
+
+<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+Filter
+</button>
+</div>
+<div class="s-text3 p-t-10 p-b-10">
+Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+</div>
+</div>
+</div>
+<div class="filter-color p-t-22 p-b-50 bo3">
+<div class="m-text15 p-b-12">
+Color
+</div>
+<ul class="flex-w" id="filters">
+
+	<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Navy-blue" id="color-filter1" type="checkbox" name="color-filter1">
+		<label class="color-filter color-filter1" for="color-filter1"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Blue" id="color-filter2" type="checkbox" name="color-filter2">
+		<label class="color-filter color-filter2" for="color-filter2"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Yellow" id="color-filter3" type="checkbox" name="color-filter3">
+		<label class="color-filter color-filter3" for="color-filter3"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Red" id="color-filter4" type="checkbox" name="color-filter4">
+		<label class="color-filter color-filter4" for="color-filter4"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Brown" id="color-filter5" type="checkbox" name="color-filter5">
+		<label class="color-filter color-filter5" for="color-filter5"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="Black" id="color-filter6" type="checkbox" name="color-filter6">
+		<label class="color-filter color-filter6" for="color-filter6"></label>
+		</li>
+		<li class="m-r-10">
+		<input class="checkbox-color-filter" value="White" id="color-filter7" type="checkbox" name="color-filter7">
+		<label class="color-filter color-filter7" for="color-filter7"></label>
+		</li>
+</ul>
+</div>
+
+
+</div>
+</div>
+<div class="col-sm-6 col-md-8 col-lg-9 p-b-50" id='products'>
+
+<div class="flex-sb-m flex-w p-b-35">
+<div class="flex-w">
+<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+	<select id="sortByPrice"  name="sortings">
+	<option value="">Sort by Price</option>
+	<option value="high-to-low">High to Low</option>
+	<option value="low-to-high">Low to High</option>
+</select>
+</div>
+
+<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+	<select name="sorting"  id="rangeByPrice">
+	<option>Price</option>
+	<option value="$0.00 - $50.00">$0.00 - $50.00</option>
+	<option value="$50.00 - $100.00">$50.00 - $100.00</option>
+	<option value="$100.00 - $150.00">$100.00 - $150.00</option>
+	<option value="$150.00 - $200.00">$150.00 - $200.00</option>
+	<option value="$200.00+">$200.00+</option>
+	</select>
+	</div>
+
+</div>
+
+</div>
+
+<div class="row mx-auto" id='productList' >
+			
+	{% for product in products %}
+
+	<div class="card mx-auto mb-3" id="element-item" style="width: 18rem;">
+		<img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+		<div class="card-body">
+		
+			<p class="product_name">{{product.name}}</p>
+			<li><p class="card-text"><b>${{product.price}}</b></p><li>
+			<p class="card-text"><b>{{product.stock}} items</b></p>
+
+	{% for options in option %}
+{%if product.id == options.product_id %}
+
+	 <p class="card-texts"><b><h6 class="name" value="{{options.product_option_name.option_name}}">Color : {{options.product_option_name.option_name}}</h6> </b></p>
+	 {% endif %}
+	 {% endfor %}
+	
+	
+		
+	
+			
+		</div>
+
+
+		<div class="card-footer p-0 no-gutters">
+
+		
+
+			<div class="">
+				
+				<div class="block2-btn-addcart w-size1 trans-0-4">
+				
+			
+			<div class="row no-gutters">
+				<form action="/#{{product.id}}" class="col-2 " method="post">
+					
+					{% csrf_token %}
+					<input hidden type="text" name='product' value='{{product.id}}'>
+					<input hidden type="text" name='remove' value='True'>
+					<input type="submit" value=" - " class="text-center col btn btn-success">
+				</form>
+				{% comment %} {% if product.id in product_counts %} {% endcomment %}
+			
+				{% comment %} {% else %} {% endcomment %}
+
+				<div class="text-center  bg4 bo-rad-23 hov1 s-text1 trans-0-4" id="bg">Add to Cart</div>
+				{% comment %} {% endif %}
+				 {% endcomment %}
+				<form action="/#{{product.id}}" class="col-2 " method="post">
+					{% csrf_token %}
+					<input hidden type="text" name='product' value='{{product.id}}'>
+					<input type="submit" value=" + " class="text-center col btn btn-success">
+				</form>
+			</div>
+			<br>
+			<a href="view/{{product.slug}}" class="float-right btn btn-warning form-control"
+					value="View Details">View Details</a>
+		</div>
+	</div>
+
+	
+			{% comment %} <form action="/#{{product.id}}" method="POST" class="btn-block">
+				{% csrf_token %}
+				<input hidden type="text" name='product' value='{{product.id}}'>
+			
+		
+			<div class="block2-overlay trans-0-4">
+				
+				<div class="block2-btn-addcart w-size1 trans-0-4">
+					<button type="submit" id="add_to_cart"  class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+						Add to Cart
+			</button><br>
+			
+
+			<a href="view/{{product.slug}}" class="float-right btn btn-warning form-control"
+					value="View Details">View Details</a>
+				</div>
+				</div>
+			</form> {% endcomment %}
+		
+
+		</div>
+
+	</div>
+	
+	{% endfor %}
+	
+
+</div>
+<br>
+<br>
+<center>
+{% if products.has_other_pages %}
+<div class="btn-group" role="group" aria-label="Item pagination">
+{% if products.has_previous %}
+<a href="?page={{ products.previous_page_number }}" class="item-pagination flex-c-m trans-0-4 active-pagination">&laquo;</a>
+{% endif %}
+
+{% for page_number in products.paginator.page_range %}
+{% if products.number == page_number %}
+	<button class="item-pagination flex-c-m trans-0-4 active-pagination">
+		<span>{{ page_number }} <span class="sr-only">(current)</span></span>
+	</button>
+{% else %}
+	<a href="?page={{ page_number }}" class="item-pagination flex-c-m trans-0-4 active-pagination">
+		{{ page_number }}
+	</a>
+{% endif %}
+{% endfor %}
+
+{% if items_page.has_next %}
+<a href="?page={{ items_page.next_page_number }}" class="item-pagination flex-c-m trans-0-4 active-pagination">&raquo;</a>
+{% endif %}
+</div>
+{% endif %}
+</center>
+</div>
+</div>
+</div>
+
+{% include "footer.html" %}
+
+
+<script type="text/javascript">
+    $( function() {
+        var availableTags = [
+            {% for product in products %}
+                {
+                    label: "{{product.name}}",
+                    image: "{{product.image}}"
+                },
+            {% endfor %}
+        ];
+
+        $( "#tags" ).autocomplete({
+            source: availableTags,
+            minLength: 2,
+        }).data( "ui-autocomplete" )._renderItem = function ( ul, item ) {
+            var image = "<a><div><img src='" + item.image + "' height='55' /> " + item.label + "</div></a><hr/>";
+
+            return $( "<li></li>" )
+             .data("ui-autocomplete-item", item)
+             .append(image)
+             .appendTo(ul);
+        };
+    });  
+</script>
+<script type="text/javascript">
+
+ 
+</script>
+<script type="text/javascript">
+//TAG AUTOCOMPLETE FORM DROPDOWN USER NAMES
+
+</script>
+{% load static %}
+
+
+
+</body>
+<script>
+document.getElementById("sortByPrice").addEventListener("change", function() {
+const sortValue = this.value;
+const products = [...document.querySelectorAll("#element-item")];
+
+products.sort((a, b) => {
+const priceA = parseFloat(a.querySelector(".card-text b").textContent.slice(1));
+const priceB = parseFloat(b.querySelector(".card-text b").textContent.slice(1));
+
+if (sortValue === "low-to-high") {
+return priceA - priceB;
+} else {
+return priceB - priceA;
+}
+});
+
+products.forEach((product) => {
+document.getElementById("productList").appendChild(product);
+});
+});
+</script>
+
+
+<script >
+document.getElementsByName("sorting")[0].addEventListener("change", function() {
+var productElements = document.getElementsByClassName("card mx-auto mb-3");
+var selectedOption = this.value;
+
+for (var i = 0; i < productElements.length; i++) {
+var productPrice = parseFloat(productElements[i].getElementsByTagName("b")[0].innerHTML.slice(1));
+var isDisplay = false;
+
+switch (selectedOption) {
+case "$0.00 - $50.00":
+if (productPrice >= 0.00 && productPrice <= 50.00) {
+  isDisplay = true;
+}
+break;
+case "$50.00 - $100.00":
+if (productPrice >= 50.00 && productPrice <= 100.00) {
+  isDisplay = true;
+}
+break;
+case "$100.00 - $150.00":
+if (productPrice >= 100.00 && productPrice <= 150.00) {
+  isDisplay = true;
+}
+break;
+case "$150.00 - $200.00":
+if (productPrice >= 150.00 && productPrice <= 200.00) {
+  isDisplay = true;
+}
+break;
+case "$200.00+":
+if (productPrice >= 200.00) {
+  isDisplay = true;
+}
+break;
+default:
+isDisplay = true;
+break;
+}
+
+if (isDisplay) {
+productElements[i].style.display = "block";
+} else {
+productElements[i].style.display = "none";
+}
+}
+});
+</script>
+
+
+
+
+<script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/noui/nouislider.min.js"></script>
+<script type="text/javascript">
+/*[ No ui ]
+===========================================================*/
+var filterBar = document.getElementById('filter-bar');
+
+noUiSlider.create(filterBar, {
+	start: [ 10, 500 ],
+	connect: true,
+	range: {
+		'min': 10,
+		'max': 500
+	}
+});
+
+var skipValues = [
+document.getElementById('value-lower'),
+document.getElementById('value-upper')
+];
+
+filterBar.noUiSlider.on('update', function( values, handle ) {
+	skipValues[handle].innerHTML = Math.round(values[handle]) ;
+});
+</script>
+<script>
+const filterButton = document.querySelector(".flex-c-m.size4.bg7");
+const products = document.querySelectorAll("#element-item");
+const lowerValue = document.querySelector("#value-lower");
+const upperValue = document.querySelector("#value-upper");
+
+filterButton.addEventListener("click", function() {
+  const lower = parseInt(lowerValue.innerText);
+  const upper = parseInt(upperValue.innerText);
+
+  products.forEach(product => {
+	const price = parseInt(product.querySelector(".card-text b").innerText.substring(1));
+	if (price >= lower && price <= upper) {
+	  product.style.display = "block";
+	} else {
+	  product.style.display = "none";
+	}
+  });
+});
+</script>
+
+<script>
+    let filters = document.querySelectorAll('.checkbox-color-filter');
+            let products = document.querySelectorAll('#element-item');
+            
+            for (let i = 0; i < filters.length; i++) {
+              filters[i].addEventListener('click', function() {
+                let selectedColor = filters[i].value;
+                for (let j = 0; j < products.length; j++) {
+                  let productColor = products[j].querySelector('.name').getAttribute('value');
+                  if (selectedColor !== productColor) {
+                    products[j].style.display = "none";
+                  } else {
+                    products[j].style.display = "block";
+                  }
+                }
+              });
+            }
+	</script>
+	
+{% endblock %}

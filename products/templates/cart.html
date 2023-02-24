@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<head>
+
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(https://preview.colorlib.com/theme/fashe/images/heading-pages-01.jpg);">
+<h2 class="l-text2 t-center">
+Cart
+</h2>
+</section>
+<br>
+<h3 style="text-align:center;"> {% if messages %}
+  {% for message in messages %}   <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+  {% endfor %}
+{% endif %} </h3>
+
+
+<section class="cart bgwhite p-t-70 p-b-100">
+<div class="container">
+
+<div class="container-table-cart pos-relative">
+<div class="wrap-table-shopping-cart bgwhite">
+<table class="table-shopping-cart">
+<tr class="table-head">
+<th class="column-1">Sno.</th>
+<th class="column-2">Product</th>
+<th class="column-3">Price</th>
+<th class="column-4 ">Quantity</th>
+<th class="column-5">Remove </th>
+<th class="column-5">Total</th>
+</tr>
+{% for product in products %}
+<tr class="table-row">
+<td class="column-1">
+<div class="cart-img-product b-rad-4 o-f-hidden">
+<img src="{{product.product.image}}" alt="IMG-PRODUCT">
+</div>
+</td>
+<td class="column-2">{{product.name}}</td>
+<td class="column-3">{{product.price|currency}}</td>
+<td class="column-4">
+  <div class="flex-w bo5 of-hidden w-size17">
+    <form action="{% url 'update_cart' product.id product.quantity %}" class="col-2 " method="post">
+                      
+      {% csrf_token %}
+      
+      <input hidden  type="text" name='product' value='{{product.id}}'>
+      <input type="submit" value=" + " name="increment"  class="btn btn-block btn-success border-left">
+  
+   
+      <input class="size8 m-text18 t-center num-product" type="number" name="quantity" value="{{product.quantity}}" readonly>
+   
+                      
+      <input hidden type="text" name='product_id' value='{{product.product.id}}'>
+      
+        <input type="submit" value=" - "  name="decrement"  class="btn btn-block btn-success border-left">
+    
+      </form>
+  </div>
+</td>
+<td class="column-5">
+    <form action="{% url 'remove-from-cart' product.id  %}" class="col-2 " method="post">
+								
+        {% csrf_token %}
+        
+        <input hidden type="text" name='product' value='{{product.id}}'>
+        <input hidden type="text" name='remove' value='True'>
+        <input type="submit" value=" x " class="btn btn-danger btn-xs"> 
+      </form>
+</td>
+<td class="column-5">{{ product.total}}</td>
+</tr>
+
+
+
+{% endfor %}
+<tfoot>
+  <tr>
+      <th colspan="4"></th>
+      <th class="" colspan="">Total</th>
+ <th>{{cart_total}}</th> 
+  </tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+<div class="flex-w flex-m w-full-sm">
+<div class="size11 bo4 m-r-10">
+<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+<h5 class="m-text20 p-b-24">
+Cart Totals
+</h5>
+
+<div class="flex-w flex-sb-m p-b-12">
+<span class="s-text18 w-size19 w-full-sm">
+Subtotal:
+</span>
+<span class="m-text21 w-size20 w-full-sm">
+  {{cart_total}}
+</span>
+</div>
+<div style="text-align: center;"> 
+       
+  <button class="button button2">Total :{{cart_total}} </button>
+  {% comment %} <a  href="#" data-toggle="modal" data-target="#exampleModal"><button class="button" ><span>Purchase </span></button></a> {% endcomment %}
+  <a href="/customer-address"><button class="button" ><span>Purchase </span></button></a>
+</div>
+</div>
+</div>
+{% include "footer.html" %}
+</body>
+</html>
+
+{% endblock %}

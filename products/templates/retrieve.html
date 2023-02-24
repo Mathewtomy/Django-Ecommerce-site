@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en-us" dir="ltr">
+<head>
+<title>Select product to change | Django site admin</title>
+<link rel="stylesheet" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" href="/static/admin/css/dark_mode.css">
+
+
+  <link rel="stylesheet" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer></script>
+
+
+  
+  <link rel="stylesheet" href="/static/admin/css/changelists.css">
+  
+  
+    <script src="/admin/jsi18n/"></script>
+  
+  
+  
+
+
+
+
+<script src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script src="/static/admin/js/jquery.init.js"></script>
+<script src="/static/admin/js/core.js"></script>
+<script src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script src="/static/admin/js/actions.js"></script>
+<script src="/static/admin/js/urlify.js"></script>
+<script src="/static/admin/js/prepopulate.js"></script>
+<script src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script src="/static/admin/js/filters.js" defer></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/static/admin/css/responsive.css">
+    
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+<body class=" app-products model-product change-list"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+    
+    <!-- Header -->
+ 
+  
+        
+      
+      <div class="content">
+        
+          
+        
+        <!-- Content -->
+        <div id="content" class="">
+          
+          <h1>Select product to change</h1>
+          
+          
+  <div id="content-main">
+    
+        <ul class="object-tools">
+          
+            
+
+
+  
+  <li>
+    
+    <a href="/admin/products/product/add/" class="addlink">
+      Add product
+    </a>
+  </li>
+  
+
+
+          
+        </ul>
+    
+    
+    <div class="module" id="changelist">
+      <div class="changelist-form-container">
+        
+
+
+        
+
+        <form id="changelist-form" method="post" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="YECII8yAReq7WyYDWe6agrTLw09ay9AcSY4TbZlV3hpzwOMPt11M8nhIBOo2LEPr">
+        
+
+        
+          
+<div class="actions">
+
+</div>
+
+          
+
+
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+<th scope="col" class="action-checkbox-column">
+   
+   <div class="text"><span><input type="checkbox" id="action-toggle"></span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-name">
+   
+     
+   
+   <div class="text"><a href="?o=1">Name</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-price">
+   
+     
+   
+   <div class="text"><a href="?o=2">Price</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-stock">
+   
+     
+   
+   <div class="text"><a href="?o=3">Stock</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-price">
+   
+     
+   
+    <div class="text"><a href="?o=2">Edit</a></div>
+    <div class="clear"></div>
+ </th>
+ <th scope="col" class="sortable column-price">
+   
+     
+   
+    <div class="text"><a href="?o=2">Delete</a></div>
+    <div class="clear"></div>
+ </th>
+</tr>
+</thead>
+<tbody>
+
+    {% for i in details %}
+<tr>
+    <td class="action-checkbox">
+    <input type="checkbox" name="_selected_action" value="4" class="action-select"></td>
+    <th class="field-name"><a href="">{{i.name}}</a></th>
+    <td class="field-price">{{i.price}}</td>
+    <td class="field-stock">{{i.stock}}</td>
+    <td class="field-stock"><a href="edit/{{ i.slug }} "> Edit</a></td>
+    <td class="field-stock">Delete</td>
+</tr>
+
+{% endfor %}
+
+
+</tbody>
+</table>
+</div>
+
+
+          
+        
+        
+
+
+
+        </form>
+      </div>
+      
+        
+      
+   </div>
+</div>

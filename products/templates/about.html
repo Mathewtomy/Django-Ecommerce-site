@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<head>
+  <style media="screen">
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .w3-panel p {
+      padding-top: 10px;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(https://preview.colorlib.com/theme/fashe/images/heading-pages-06.jpg);">
+  <h2 class="l-text2 t-center">
+  About
+  </h2>
+  </section>
+  
+  <section class="bgwhite p-t-66 p-b-38">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-4 p-b-30">
+  <div class="hov-img-zoom">
+  <img src="https://preview.colorlib.com/theme/fashe/images/banner-14.jpg" alt="IMG-ABOUT">
+  </div>
+  </div>
+  <div class="col-md-8 p-b-30">
+  <h3 class="m-text26 p-t-15 p-b-16">
+  Our story
+  </h3>
+  {% for abouts in about %}
+  <p class="p-b-28">
+    {{ abouts.name}} 
+  </p>
+  {% endfor %}
+  <div class="bo13 p-l-29 m-l-9 p-b-10">
+  <p class="p-b-11">
+  Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+  </p>
+  <span class="s-text7">
+  - Steve Job’s
+  </span>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+
+
+{% include "footer.html" %}
+{% endblock %}

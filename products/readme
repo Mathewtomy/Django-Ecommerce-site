@@ -1,0 +1,12 @@
+# py manage.py startapp products
+# py manage.py migrate
+# py manage.py runserver
+# py manage.py makemigrations products
+# py manage.py migrate
+# py manage.py makemigrations   (offer)  
+# py manage.py migrate(run)
+
+# admin
+# py manage.py migrate
+# python manage.py createsuperuser(admin)
+# pass:12345@123

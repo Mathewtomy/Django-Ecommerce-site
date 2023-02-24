@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <style>
+    .header-icons{
+      cursor:pointer
+    }
+  </style>
+  {% load static %}
+  <link rel="stylesheet"   type="text/css" href="{% static 'css/new-style.css' %}">
+  <link rel="stylesheet"   type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+ 
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/css/util.css">
+   
+  <script src=  "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  </script>  
+  <script src=  
+  "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+      </script> 
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+   
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"/>
+
+  <!-- Bootstrap CSS -->
+   
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/css/util.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
+  <link rel="icon" type="image/png" href="https://preview.colorlib.com/theme/fashe/images/icons/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/bootstrap/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/font-awesome-4.7.0/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/themify/themify-icons.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/Linearicons-Free-v1.0.0/icon-font.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/legant-font/html-css/style.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/animate/animate.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/css-hamburgers/hamburgers.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/animsition/css/animsition.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/select2/select2.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/daterangepicker/daterangepicker.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/slick/slick.css">
+  
+  <link rel="stylesheet" type="text/css" href="https://preview.colorlib.com/theme/fashe/vendor/lightbox2/css/lightbox.min.css">
+ 
+
+  <title>E-commerce Website</title>
+
+
+
+</head>
+
+<body >
+
+  <header class="header1">
+
+
+    <div class="wrap_header">
+    
+    <a href="/store" class="logo">
+    <img src="https://preview.colorlib.com/theme/fashe/images/icons/logo.png" alt="IMG-LOGO">
+    </a>
+
+  <!-- navbar -->
+  
+<div class="wrap_menu">
+  <nav class="menu">
+    <ul class="main_menu">
+    <li>
+    <a href="/store">Home</a>
+
+    <li>
+    <a href="/product">Shop</a>
+    </li>
+  
+    <a href="/blog">Blog</a>
+    </li>
+    <li>
+    <a href="/about">About</a>
+    </li>
+    <li>
+    <a href="/contact">Contact</a>
+    </li>
+   
+
+    </nav>
+
+    </div>
+
+    <div class="wrap">
+      <form  action="search/" method="get">
+      <div class="search">
+         <input type="text"   name="query" id="tags" class="autocomplete" placeholder="Search Products...">
+         <button type="submit" class="searchButton">
+           <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </form>
+   </div>
+ 
+
+   <div class="header-icons" >
+    <div class="header-wrapicon" >
+    <img src="https://preview.colorlib.com/theme/fashe/images/icons/icon-header-01.png" class="header-iconz" alt="ICON">
+    </div>
+
+
+
+    <div class="header-carts" id="targets">
+      <ul class="header-carts-wrapitem">
+        {% if request.session.customer %}
+        <li>
+          <a ></a>
+        </li>
+        <br>     <br>
+        <li>
+          <a  href="/orders">Orders</a>
+        </li>
+        <li >
+          <a  href="/return">Return</a>
+        </li>
+        <li >
+          <a  href="/account">Account</a>
+        </li>
+        <li >
+          <a href="/logout">Logout</a>
+        </li>
+        {% else %}
+        <li >
+          <a  href="/signup">Signup</a>
+        </li>
+        <li >
+          <a  href="/login">Login</a>
+        </li>
+      </ul>
+        {% endif %}
+      </ul>
+    </div>
+     
+  
+
+      <span class="linedivide1"></span>
+     <div class="header-wrapicon2">
+    <img src="https://preview.colorlib.com/theme/fashe/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+      <span class="header-icons-noti"> {{ cart_length }}</span>
+      
+   
+
+      {% block foo %}
+      {% include "carts.html" %}
+      {% endblock %}
+ 
+      </div>
+      
+      </div>
+  </div>
+
+    </nav>
+  </div>
+  
+</header>
+
+<div class="wrap_header_mobile">
+
+  <a href="index.html" class="logo-mobile">
+  <img src="https://preview.colorlib.com/theme/fashe/images/icons/logo.png" alt="IMG-LOGO">
+  </a>
+  
+  <div class="btn-show-menu">
+  
+  <div class="header-icons-mobile">
+  <a href="#" class="header-wrapicon1 dis-block">
+  <img src="https://preview.colorlib.com/theme/fashe/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+  </a>
+  <span class="linedivide2"></span>
+  <div class="header-wrapicon2">
+  <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+  <span class="header-icons-noti">0</span>
+  
+  <div class="header-cart header-dropdown">
+  <ul class="header-cart-wrapitem">
+  <li class="header-cart-item">
+  <div class="header-cart-item-img">
+  <img src="images/item-cart-01.jpg" alt="IMG">
+  </div>
+  <div class="header-cart-item-txt">
+  <a href="#" class="header-cart-item-name">
+  White Shirt With Pleat Detail Back
+  </a>
+  <span class="header-cart-item-info">
+  1 x $19.00
+  </span>
+  </div>
+  </li>
+  <li class="header-cart-item">
+  <div class="header-cart-item-img">
+  <img src="https://preview.colorlib.com/theme/fashe/images/item-cart-02.jpg" alt="IMG">
+  </div>
+  <div class="header-cart-item-txt">
+  <a href="#" class="header-cart-item-name">
+  Converse All Star Hi Black Canvas
+  </a>
+  <span class="header-cart-item-info">
+  1 x $39.00
+  </span>
+  </div>
+  </li>
+  <li class="header-cart-item">
+  <div class="header-cart-item-img">
+  <img src="https://preview.colorlib.com/theme/fashe/images/item-cart-03.jpg" alt="IMG">
+  </div>
+  <div class="header-cart-item-txt">
+  <a href="#" class="header-cart-item-name">
+  Nixon Porter Leather Watch In Tan
+  </a>
+  <span class="header-cart-item-info">
+  1 x $17.00
+  </span>
+  </div>
+  </li>
+  </ul>
+  <div class="header-cart-total">
+  Total: $75.00
+  </div>
+  <div class="header-cart-buttons">
+  <div class="header-cart-wrapbtn">
+  
+  <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+  View Cart
+  </a>
+  </div>
+  <div class="header-cart-wrapbtn">
+  
+  <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+  Check Out
+  </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+  <span class="hamburger-box">
+  <span class="hamburger-inner"></span>
+  </span>
+  </div>
+  </div>
+  </div>
+  
+  <div class="wrap-side-menu">
+  <nav class="side-menu">
+  <ul class="main-menu">
+  <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+  <span class="topbar-child1">
+  Free shipping for standard order over $100
+  </span>
+  </li>
+  <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+  <div class="topbar-child2-mobile">
+  <span class="topbar-email">
+  <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f39592809b96b3968b929e839f96dd909c9e">[email&#160;protected]</a>
+  </span>
+  <div class="topbar-language rs1-select2">
+  <select class="selection-1" name="time">
+  <option>USD</option>
+  <option>EUR</option>
+  </select>
+  </div>
+  </div>
+  </li>
+  <li class="item-topbar-mobile p-l-10">
+  <div class="topbar-social-mobile">
+  <a href="#" class="topbar-social-item fa fa-facebook"></a>
+  <a href="#" class="topbar-social-item fa fa-instagram"></a>
+  <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+  <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+  <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+  </div>
+  </li>
+  <li class="item-menu-mobile">
+  <a href="/store">Home</a>
+ 
+  <li class="item-menu-mobile">
+  <a href="/product">Shop</a>
+  </li>
+
+  
+  <li class="item-menu-mobile">
+  <a href="/blog">Blog</a>
+  </li>
+  <li class="item-menu-mobile">
+  <a href="/about">About</a>
+  </li>
+  <li class="item-menu-mobile">
+  <a href="/contact">Contact</a>
+  </li>
+  </ul>
+  </nav>
+  </div>
+  </header>
+  <!---->
+  {% block content %}{% endblock %}
+
+    <script>
+      var icon = document.querySelector(".header-wrapicon .header-iconz");
+      var target = document.getElementById("targets");
+    
+      icon.addEventListener("click", function() {
+        if (target.style.display === "block") {
+          target.style.display = "none";
+        } else {
+          target.style.display = "block";
+        }
+      });
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"></script>
+
+
+    
+
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/animsition/js/animsition.min.js"></script>
+
+
+ 
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/bootstrap/js/bootstrap.min.js"></script>
+  
+  
+  
+  <script src="https://preview.colorlib.com/theme/fashe/js/main.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"7909ddf45911f55f","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.3","si":100}' crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/slick/slick.min.js"></script>
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/js/slick-custom.js"></script>
+  
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/countdowntime/countdowntime.js"></script>
+  
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/lightbox2/js/lightbox.min.js"></script>
+  
+  <script type="text/javascript" src="https://preview.colorlib.com/theme/fashe/vendor/sweetalert/sweetalert.min.js"></script>
+  
+
+  
+
+  
+
+  <script type="text/javascript">
+      $('.block2-btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to cart !", "success");
+        });
+      });
+  
+      $('.block2-btn-addwishlist').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to wishlist !", "success");
+        });
+      });
+    </script>
+
+</body>
+
+</html>

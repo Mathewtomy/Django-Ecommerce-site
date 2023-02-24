@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock title %}
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<section id="services" class="services section-bg">
+    <div class="container-fluid">
+     
+       <div class="row row-sm">
+          <div class="col-md-6 _boxzoom">
+             <div class="zoom-thumb">
+             
+             </div>
+             <div class="_product-images">
+                <div class="picZoomer">
+                   <img class="my_img" src={{object.image}} alt="">
+                </div>
+             </div>
+          </div>
+          
+          <div class="col-md-6">
+             <div class="_product-detail-content">
+         
+                <p class="_p-name"> {{object.name}} </p>
+                <div class="_p-price-box">
+                   <div class="p-list">
+                      <span> M.R.P. : <i class="fa fa-inr"></i> <del> {{object.price}}  </del>   </span>
+                      <span class="price"> Rs. {{object.price}}  </span>
+                   </div>
+                  
+                   
+                   <div class="_p-features">
+                      <span> Description About this product:- </span>
+                      {{object.description}}                        
+                   </div>
+
+                   <div class="_p-features">
+                    <span>Category:- </span>
+                    {{object.category_name}}                        
+                 </div>
+                
+                      <ul class="spe_ul"></ul>
+                      <div class="_p-qty-and-cart">
+                         <div class="_p-add-cart">
+                           <div class="card-footer p-0 no-gutters">
+
+                              
+                           
+                              <form action="/cartview" class="col-2 " method="post">
+								
+                                 {% csrf_token %}
+                                 
+                                 <input hidden type="text" name='product' value='{{object.id}}'>
+                                 <input hidden type="text" name='remove' value='True'>
+                                 <input type="submit" class="float-right btn btn-success form-control"
+                                 value="Add To Cart"> 
+                               </form>
+            
+                           </div>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+
+ 
+ {% endblock %}

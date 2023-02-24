@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<style media="screen">
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: #f8f9fa;
+    }
+    .table td, .table th {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #1d2124;
+  }
+  .btn-block {
+    display: block;
+    width: 10%;
+}
+</style>
+<div class="container">
+   <div class="breturn rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Your returns</p>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for return in page_obj.object_list %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                 
+                    <td>{{return.date}}</td>
+                    <td>{{return.product.name}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{return.product.image}}" alt=""></td>
+                    <td>{{return.quantity}}</td>
+                    <td>{{return.reason}}</td>
+                    {% if return.status %}
+                    <td><small class="badge badge-success">Completed</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+               
+            </tbody>
+
+        </table>
+        <center>
+            {%if page_obj.has_previous %} {# whether the previous page exists #}
+                <a href="?page={{page_obj.previous_page_number}}" class="btn btn-block btn-success ">Prev</a> {# link to the prev page #}
+            {% endif %}
+            <span>{{page_obj.number}}</span> {# the current page number #}
+            
+            {%if page_obj.has_next %} {# whether the next page exists #}
+                <a href="?page={{page_obj.next_page_number}}" class="btn btn-block btn-warning ">Next</a> {# link to the next page #}
+            {% endif %}
+        </center>
+   </div>
+</div>
+
+
+
+
+
+{% endblock %}
